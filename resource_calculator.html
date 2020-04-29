@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="gem_navbar.css">
+    </head>
+
+
+    <body>
+
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">GEM v1.0</a>
+                </div>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="file_formats.html">File Formats</a></li>
+                    <li><a href="parameters.html">Parameters</a></li>
+                    <li><a href="resource_calculator.html">Resource Calculator</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="division1" style="position:absolute">
+
+            <table id="option_table" bgcolor=#f8f8f8>
+
+                <!-- General Options -->
+                <tr class="thead">
+                    <td colspan="1" , style="width:225px"><h4>Phenotype file</h4></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" class="phenotype" value="1" id="continuous" name="continuous" checked><label for="continuous">continuous</label>
+                        <input type="checkbox" class="phenotype" value="1" id="binary" name="binary"><label for="binary">binary</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="nonrobust" name="nonrobust" checked><label for="nonrobust">non-robust</label>
+                        <input type="checkbox" id="robust" name="robust"><label for="robust">robust</label>
+                    </td>
+                </tr>
+
+                <tr><td><label for="samples">&nbsp;# samples: </label></td></tr>
+                <tr><td> <input type="text" id="samples" name="samples" size="20" style="height:15px;"></td></tr>
+                <tr><td><label for="covar">&nbsp;# covariates: </label></td></tr>
+                <tr><td> <input type="text" id="covar" name="covar" size="20" style="height:15px;"></td></tr>
+                <tr><td><label for="intcovar">&nbsp;# interaction covariates: </label></td></tr>
+                <tr><td> <input type="text" id="intcovar" name="intcovar" size="20" style="height:15px;"></td></tr>
+                <tr><td><label for="exposure">&nbsp;# exposures: </label></td></tr>
+                <tr><td> <input type="text" id="exposure" name="exposure" size="20" style="height:15px;"></td></tr>
+
+                <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+                <tr class="thead">
+                    <td colspan="1" , style="width:225px"><h4>BGEN file</h4></td>
+                </tr>
+                <tr><td><label for="bgen_samples">&nbsp;# samples: </label></td></tr>
+                <tr><td> <input type="text" id="bgen_samples" name="bgen_samples" size="20" style="height:15px;"></td></tr>
+                <tr><td><label for="variants">&nbsp;# variants: </label></td></tr>
+                <tr><td> <input type="text" id="variants" name="variants" size="20" style="height:15px;"></td></tr>
+                <tr>
+                    <td>
+                        Compression: <input type="checkbox" class="phenotype" value="1" id="zlib" name="zlib" checked><label for="zlib">Zlib</label>
+                        <input type="checkbox" class="phenotype" value="1" id="zstd" name="zstd"><label for="zstd">ZSTD</label>
+                    </td>
+                </tr>
+
+                <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+                <tr class="thead">
+                    <td colspan="1" , style="width:225px"><h4>Performance</h4></td>
+                </tr>
+                <tr><td><label for="threads">&nbsp;Total # of physical cores: </label></td></tr>
+                <tr><td> <input type="text" id="threads" name="threads" size="20" style="height:15px;"></td></tr>
+                <tr><td><label for="ss">&nbsp;# stream SNPs: </label></td></tr>
+                <tr><td> <input type="text" id="ss" name="ss" size="20" style="height:15px;"></td></tr>
+
+                <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+                <tr class="thead">
+                    <td colspan="1" , style="width:225px"><h4>Cost</h4></td>
+                </tr>
+                <tr><td><label for="gb">&nbsp;$ per gigabyte (Gb): </label></td></tr>
+                <tr><td> <input type="text" id="gb" name="gb" size="20" style="height:15px;"></td></tr>
+                <tr><td><label for="cores">&nbsp;$ per core: </label></td></tr>
+                <tr><td> <input type="text" id="cores" name="cores" size="20" style="height:15px;"></td></tr>
+
+                <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+                <tr><td> <input type="button" onclick="plot_df()" value="Submit"></td></tr>
+            </table>
+
+        </div>
+
+        <div id="tester" style="width:600px;height:300px;margin-left:300px;"></div>
+
+
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script>
+            function plot_df() {     // 2. Use the margin convention practice
+                TESTER = document.getElementById('tester');
+
+                var n_samples = document.getElementById("samples").value;
+                var n_variants = document.getElementById("variants").value;
+                var n_ss = document.getElementById("ss").value;
+                var n_threads = document.getElementById("threads").value;
+
+
+                var y_tickNum = new Array(n_threads + 1);
+                var x_tickNum = new Array(n_threads + 1);
+                x_tickNum[0] = 0;
+                y_tickNum[0] = 0;
+                var y_array = new Array(n_threads);
+                for (var i = 0; i < n_threads; i++) {
+                    x_tickNum[(i + 1)] = (i + 1);
+                    y_tickNum[(i + 1)] = (8 * (i + 1) * n_samples * n_ss) / 1000000000;
+                }
+
+                var trace1 = {
+                    type: "scatter",
+                    x: x_tickNum,
+                    y: y_tickNum,
+                    mode: "markers+lines",
+                    marker: { autocolorscale: false, color: "rgba(0,0,0,1)", opacity: 1, size: 5.66929133858268, symbol: "circle", line: { width: 1.88976377952756, color: "rgba(0,0,0,1)" } },
+                    hoveron: "points",
+                    showlegend: false,
+                    xaxis: "x",
+                    yaxis: "y",
+                    hovertemplate:
+                        '<i>Gigabytes</i>: %{y}' +
+                        '<br><b>Threads</b>: %{x}<br>',
+                    line: { width: 1.88976377952756, color: "rgba(0,0,0,1)", dash: "longdash" },
+                    name: ""
+                }
+
+                var data = [trace1]
+
+                var layout = {
+                    margin: { t: 43.6240978052732, r: 7.30593607305936, b: 40.0441891294742, l: 31.4155251141553 },
+                    paper_bgcolor: "rgba(255,255,255,1)",
+                    font: { color: "rgba(0,0,0,1)", family: "", size: 14.6118721461187 },
+                    title: { text: "Estimated Memory Usage per Thread", font: { color: "rgba(0,0,0,1)", family: "", size: 17.5342465753425 }, x: 0.5, xref: "paper" },
+                    xaxis: { domain: [0, 1], automargin: true, type: "linear", autorange: false, range: [-0.3, Number(n_threads) + 0.3], tickmode: "array", ticktext: x_tickNum, "tickvals": x_tickNum, categoryorder: "array", categoryarray: x_tickNum, nticks: null, ticks: "outside", tickcolor: "rgba(51,51,51,1)", ticklen: 3.65296803652968, tickwidth: 0.66417600664176, showticklabels: true, tickfont: { color: "rgba(77,77,77,1)", family: "", size: 11.689497716895 }, tickangle: -0, showline: false, linecolor: null, linewidth: 0, showgrid: true, gridcolor: "rgba(242,242,242,1)", gridwidth: 0.66417600664176, zeroline: false, anchor: "y", title: { text: "Number of Threads", font: { "color": "rgba(0,0,0,1)", family: "", size: 14.6118721461187 } }, hoverformat: ".2f" },
+                    yaxis: { domain: [0, 1], automargin: true, type: "linear", autorange: true, nticks: null, ticks: "outside", tickcolor: "rgba(51,51,51,1)", ticklen: 3.65296803652968, tickwidth: 0.66417600664176, showticklabels: true, tickfont: { color: "rgba(77,77,77,1)", family: "", size: 11.689497716895 }, tickangle: -0, showline: false, linecolor: null, linewidth: 0, showgrid: true, gridcolor: "rgba(242,242,242,1)", gridwidth: 0.66417600664176, zeroline: false, anchor: "x", title: { text: "Gigabytes (Gb)", font: { color: "rgba(0,0,0,1)", family: "", size: 14.6118721461187 } }, hoverformat: ".2f" },
+                    shapes: [{ type: "rect", fillcolor: "transparent", line: { color: "rgba(0,0,0,1)", width: 0.66417600664176, linetype: "solid" }, yref: "paper", xref: "paper", x0: 0, x1: 1, y0: 0, y1: 1 }],
+                    showlegend: false,
+                    legend: { bgcolor: "rgba(255,255,255,1)", bordercolor: "transparent", borderwidth: 1.88976377952756, font: { color: "rgba(0,0,0,1)", family: "", size: 11.689497716895 } },
+                    hovermode: "closest",
+                    barmode: "relative",
+
+                };
+
+                return Plotly.newPlot(TESTER, data, layout);
+
+            }
+        </script>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+    </body>
+</html>
+
+

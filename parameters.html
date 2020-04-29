@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="gem_navbar.css">
+    </head>
+
+
+    
+    <body>
+
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">GEM v1.0</a>
+                </div>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="file_formats.html">File Formats</a></li>
+                    <li><a href="parameters.html">Parameters</a></li>
+                    <li><a href="resource_calculator.html">Resource Calculator</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+        <!-- Section of options -->
+        <br />
+        <h2 align="center">GEM Parameters</h2>
+
+        <p>
+            <a href="#General_Options">General Options</a> |
+            <a href="#Input_File_Options">Input File Options</a> |
+            <a href="#Phenotype_File_Options">Phenotype File Options</a> |
+            <a href="#Filtering_Options">Filtering Options</a> |
+            <a href="#Performance_Options">Performance Options</a>
+        </p>
+
+
+        <!-- Search box -->
+        <br />
+        <p class="container-fluid">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search parameter name..." size="25">
+        </p>
+
+        <br />
+        <br />
+        <br />
+
+
+
+
+        <!-- Option Table -->
+        <table id="option_table" style="margin-left:175px;table-layout:fixed;">
+
+            <!-- General Options -->
+            <tr class="thead">
+                <td colspan="1" , style="width:225px"><h3 , id="General_Options">General Options</h3></td>
+            </tr>
+            <tr class="thead2">
+                <td colspan="1"><h4>Flag</h4></td>
+                <td colspan="1"><h4>Description</h4></td>
+            </tr>
+            <tr><td height="35">--help</td><td height="35">Prints the available options of GEM and exits.</td></tr>
+            <tr><td height="35">--version</td><td height="35">Prints the version of GEM and exits.</td></tr>
+
+
+
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+
+
+            <!-- Input File Options -->
+            <tr class="thead">
+                <td colspan="1"><h3 , id="Input_File_Options">Input File Options</h3></td>
+            </tr>
+            <tr class="thead2">
+                <td colspan="1"><h4>Flag</h4></td>
+                <td colspan="1"><h4>Description</h4></td>
+            </tr>
+            <tr><td height="35">--pheno-file</td><td height="35">Path to the phenotype file.</td></tr>
+            <tr><td height="35">--bgen</td><td height="35">Path to the BGEN file.</td></tr>
+            <tr><td height="50">--sample</td><td height="50">Path to the sample file. Required when the BGEN file does not contain sample identifiers.</td></tr>
+            <tr><td height="50">--out</td><td height="50">Full path and extension to where GEM should output results. <br /> <b>Default</b>: gem.out</td></tr>
+
+
+
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+
+
+            <!--Phenotype File Options-->
+            <tr class="thead">
+                <td colspan="1"><h3 , id="Phenotype_File_Options">Phenotype File Options</h3></td>
+            </tr>
+            <tr class="thead2">
+                <td colspan="1"><h4>Flag</h4></td>
+                <td colspan="1"><h4>Description</h4></td>
+            </tr>
+            <tr><td height="35">--sampleid-name</td><td height="35">Column name in the phenotype file that contains sample identifiers.</td></tr>
+            <tr><td height="35">--pheno-name</td><td height="35">Column name in the phenotype file that contains the phenotype of interest.</td></tr>
+            <tr><td height="50">--exposure-names</td><td height="50">One or more column names in the phenotype file naming the exposure(s) to be included in interaction tests.</td></tr>
+            <tr><td height="50">--int-covar-names</td><td height="50">Any column names in the phenotype file naming the covariate(s) for which interactions should be included for adjustment (mutually exclusive with --exposure-names).</td></tr>
+            <tr><td height="50">--covar-names</td><td height="50">Any column names in the phenotype file naming the covariates for which only main effects should be included for adjustment (mutually exclusive with both --exposure-names and --int-covar-names).</td></tr>
+            <tr><td height="35">--pheno-type</td><td height="35">0 indicates a continuous phenotype and 1 indicates a binary phenotype.</td></tr>
+            <tr><td height="50">--robust</td><td height="50">0 for model-based standard errors and 1 for robust standard errors. <br /> <span style="font-weight:bold">Default</span>: 0</td></tr>
+            <tr><td height="50">--tol</td><td height="50">Convergence tolerance for logistic regression.  <br /> <span style="font-weight:bold">Default</span>: 0.0000001</td></tr>
+            <tr><td height="50">--delim</td><td height="50">Delimiter separating values in the phenotype file. <br /> <span style="font-weight:bold">Default</span>: , (comma-separated)</td></tr>
+            <tr><td height="50">--missing-value</td><td height="50">Indicates how missing values in the phenotype file are stored. <br /> <span style="font-weight:bold">Default</span>: NA</td></tr>
+
+
+
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+
+
+            <!--Filtering Options-->
+            <tr class="thead">
+                <td colspan="1"><h3 , id="Filtering_Options">Filtering Options</h3></td>
+            </tr>
+            <tr class="thead2">
+                <td colspan="1"><h4>Flag</h4></td>
+                <td colspan="1"><h4>Description</h4></td>
+            </tr>
+            <tr><td height="50">--threads</td><td height="50">Set the maximum number of compute threads. <br /> <span style="font-weight:bold">Default</span>: ceiling(Detected threads / 2) </td></tr>
+            <tr><td height="75">--stream-snps</td><td height="75">Set the number of SNPs to analyze in a batch. <br /> Memory consumption will increase for larger values of --stream-snps. <br /> <span style="font-weight:bold">Default</span>: 1 </td></tr>
+
+
+
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+
+
+            <!--Performance Options-->
+            <tr class="thead">
+                <td colspan="1"><h3 , id="Performance_Options">Performance Options</h3></td>
+            </tr>
+            <tr class="thead2">
+                <td colspan="1"><h4>Flag</h4></td>
+                <td colspan="1"><h4>Description</h4></td>
+            </tr>
+            <tr><td height="50">--threads</td><td height="50">Set the maximum number of compute threads. <br /> <span style="font-weight:bold">Default</span>: ceiling(Detected threads / 2) </td></tr>
+            <tr><td height="75">--stream-snps</td><td height="75">Set the number of SNPs to analyze in a batch. <br /> Memory consumption will increase for larger values of --stream-snps. <br /> <span style="font-weight:bold">Default</span>: 1 </td></tr>
+        </table>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <script>
+            function myFunction() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("option_table");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
+    </body>
+
+
+</html>
+
+
