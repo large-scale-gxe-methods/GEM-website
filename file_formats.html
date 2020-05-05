@@ -23,7 +23,9 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="file_formats.html">File Formats</a></li>
                 <li><a href="parameters.html">Parameters</a></li>
+                <li><a href="examples.html">Examples</a></li>
                 <li><a href="resource_calculator.html">Resource Calculator</a></li>
+                <li><a href="workflows.html">Workflows</a></li>
             </ul>
         </div>
     </nav>
@@ -34,7 +36,7 @@
     <br />
     <h2 align="center">Input/Output Files</h2>
 
-    <p>
+    <p align="center">
         <a href="#Genotype_Files">Genotype Files</a> |
         <a href="#Phenotype_File">Phenotype File</a> |
         <a href="#Output_File">Output File</a> |
@@ -60,9 +62,8 @@
         </tr>
         <tr>
             <td width="700">
-                GEM supports version 1.1, 1.2 and 1.3 binary GEN (BGEN) genotype files described <a href="https://www.well.ox.ac.uk/~gav/bgen_format/"><u>here</u></a>. <br />
-                In summary, the BGEN file can either be in layout 1 or layout 2 formats, contain unphased or phased genotypes, and compressed using Zlib or ZSTD. <br />
-                A <a href=""><u>.sample</u></a> file should accompany the .bgen file if no sample identifiers are present within the .bgen file using the <code>--sample</code> flag.
+                GEM supports version 1.1, 1.2 and 1.3 binary GEN (BGEN) genotype files described <a href="https://www.well.ox.ac.uk/~gav/bgen_format/"><u>here</u></a>.
+                A .sample file should accompany the .bgen file if no sample identifiers are present within the .bgen file using the <code>--sample</code> flag.
             </td>
 
 
@@ -150,9 +151,9 @@
         </tr>
         <tr>
             <td>
-                A .sample file is required when the BGEN file does not include sample identifiers. The <code>--sample</code> option can be used to include a .sample file. <br />
+                A .sample file is required when the BGEN file does not include sample identifiers within the file. Include a .sample file with the <code>--sample</code> option. <br />
                 Formats for the .sample file should follow QCTOOLv2 format described <a href="https://www.well.ox.ac.uk/~gav/qctool_v2/documentation/sample_file_formats.html"><u>here</u></a>.
-                The first column in the .sample file should always be the identifier column.
+                The first column in the .sample file should always be the ID column.
             </td>
         </tr>
 

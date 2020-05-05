@@ -23,7 +23,9 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="file_formats.html">File Formats</a></li>
                     <li><a href="parameters.html">Parameters</a></li>
+                    <li><a href="examples.html">Examples</a></li>
                     <li><a href="resource_calculator.html">Resource Calculator</a></li>
+                    <li><a href="workflows.html">Workflows</a></li>
                 </ul>
             </div>
         </nav>
@@ -34,7 +36,7 @@
         <br />
         <h2 align="center">GEM Parameters</h2>
 
-        <p>
+        <p align="center">
             <a href="#General_Options">General Options</a> |
             <a href="#Input_File_Options">Input File Options</a> |
             <a href="#Phenotype_File_Options">Phenotype File Options</a> |
@@ -45,7 +47,7 @@
 
         <!-- Search box -->
         <br />
-        <p class="container-fluid">
+        <p class="container-fluid" align="center">
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search parameter name..." size="25">
         </p>
 
@@ -134,9 +136,7 @@
                 <td colspan="1"><h4>Flag</h4></td>
                 <td colspan="1"><h4>Description</h4></td>
             </tr>
-            <tr><td height="50">--threads</td><td height="50">Set the maximum number of compute threads. <br /> <span style="font-weight:bold">Default</span>: ceiling(Detected threads / 2) </td></tr>
-            <tr><td height="75">--stream-snps</td><td height="75">Set the number of SNPs to analyze in a batch. <br /> Memory consumption will increase for larger values of --stream-snps. <br /> <span style="font-weight:bold">Default</span>: 1 </td></tr>
-
+            <tr><td height="35">--maf</td><td height="50">Threshold to filter variants based on the minor allele frequency [0.0, 1.0]. <br /> <span style="font-weight:bold">Default</span>: 0.0001 </td></tr>
 
 
             <tr class="spacer"><td colspan="1">&nbsp;</td></tr>

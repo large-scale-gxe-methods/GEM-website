@@ -22,16 +22,130 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="file_formats.html">File Formats</a></li>
                 <li><a href="parameters.html">Parameters</a></li>
+                <li><a href="examples.html">Examples</a></li>
                 <li><a href="resource_calculator.html">Resource Calculator</a></li>
+                <li><a href="workflows.html">Workflows</a></li>
             </ul>
         </div>
     </nav>
 
     <br />
-    <h2 align="center">GEM v1.0</h2>
-    <p align="center"><u>G</u>ene-<u>E</u>nvironment interaction analysis for <u>M</u>illions of samples</p>
-    <br />
-    GEM (Gene-Environment interaction analysis for Millions of samples) is a software program for large-scale gene-environment interaction testing in samples from unrelated individuals. It enables genome-wide association studies in up to millions of samples while allowing for multiple exposures, control for genotype-covariate interactions, and robust inference.
+
+
+    <div class="division1" style="position:absolute">
+
+        <table id="option_table" bgcolor=#f8f8f8 width="150px">
+
+            <!-- General Options -->
+
+            <tr class="thead">
+                <td colspan="1"><p , id="Download" align="left">&nbsp;Download</p></td>
+            </tr>
+            <tr class="thead">
+                <td colspan="1"><p , id="Recent Updates" align="left">&nbsp;Recent Updates</p></td>
+            </tr>
+            <tr class="thead">
+                <td colspan="1"><p , id="Older Updates" align="left">&nbsp;Older Updates</p></td>
+            </tr>
+            <tr class="thead">
+                <td colspan="1"><p , id="Citation" align="left">&nbsp;Citation</p></td>
+            </tr>
+            <tr class="thead">
+                <td colspan="1"><p , id="License" align="left">&nbsp;License</p></td>
+            </tr>
+
+
+        </table>
+
+    </div>
+
+    <div id="tester" style="width:800px;height:500px;margin-left:200px;">
+        <div style="font-size:30px;" align="center">
+            <b>
+                GEM v1.0
+            </b>
+        </div>
+
+        <p align="center" style="font-size:16px;">
+            <u>G</u>ene-<u>E</u>nvironment interaction for <u>M</u>illions of samples
+        </p>
+
+        <br />
+
+        <p style="font-size:15px;line-height:1.5;" align="left">
+            GEM (Gene-Environment interaction analysis for Millions of samples) is a software program for large-scale gene-environment interaction testing in samples from unrelated individuals. It enables genome-wide association studies in up to millions of samples while allowing for multiple exposures, control for genotype-covariate interactions, and robust inference.
+        </p>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <style>
+            #update_block {
+                padding: 0 .2em;
+                background: white;
+            }
+        </style>
+
+
+        <h2>Recent Updates: </h2>
+        <h3>Version 1.0 - March 31, 2020: </h3>
+        <div id="update_block">
+            <table>
+                <tr><td height="25">- Column name in the phenotype file that contains sample identifiers.</td></tr>
+                <tr><td height="25">- Add a minor allele frequency filtering option <code>--maf</code> <br /></td></tr>
+                <tr><td height="25">- Multithreading is now done across SNPs by specifying the number of threads <code>--threads</code> <br /></td></tr>
+                <tr><td height="25">- Command-line only feature and removed the need for a parameter file <br /></td></tr>
+                <tr><td height="25">- Allow for interaction covariate adjustments <code>--int-covar-names</code> <br /></td></tr>
+                <tr><td height="25">- Support BGEN files with bi-allelic and <b>phased</b> genotypes <br /></td></tr>
+                <tr><td height="25">- Fix how GEM parses BGEN v1.1 <br /></td></tr>
+                <tr><td height="25">- Support BGEN v1.3 ZSTD compression method <br /></td></tr>
+                <tr><td height="25">- Default values for <code> --out , --robust, --tol, --delim, --missing-value, --threads, --stream-snps</code> <br />&nbsp;&nbsp;(see Parameters)</td></tr>
+                <tr><td height="25">- Changed some of the output messages</td></tr>
+                <tr><td height="25">- Changed the temporary bin file names to the value specified with <code>--out</code></td></tr>
+                <tr><td height="25">- Change header names with 'Main' to 'Marginal'</td></tr>
+            </table>
+        </div>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <h2>Citation: </h2>
+        <div>
+            TBA
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <h2>License: </h2>
+        <div style="font-size:15px;">
+            This program is free software: you can redistribute it and/or modify
+            it under the terms of the GNU General Public License as published by
+            the Free Software Foundation, either version 3 of the License, or
+            (at your option) any later version.
+        </div>
+        <br />
+        <img src="http://www.gnu.org/graphics/gplv3-88x31.png" alt="Trulli" width="100" height="25"> <a href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License, GPLv3</a>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+
+
 </body>
 </html>
 

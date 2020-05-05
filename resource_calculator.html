@@ -22,7 +22,9 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="file_formats.html">File Formats</a></li>
                     <li><a href="parameters.html">Parameters</a></li>
+                    <li><a href="examples.html">Examples</a></li>
                     <li><a href="resource_calculator.html">Resource Calculator</a></li>
+                    <li><a href="workflows.html">Workflows</a></li>
                 </ul>
             </div>
         </nav>
@@ -38,14 +40,14 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" class="phenotype" value="1" id="continuous" name="continuous" checked><label for="continuous">continuous</label>
-                        <input type="checkbox" class="phenotype" value="1" id="binary" name="binary"><label for="binary">binary</label>
+                        <input type="checkbox" class="radio" value="1" id="continuous" name="phenotype" checked><label for="continuous">continuous</label>
+                        <input type="checkbox" class="radio" value="1" id="binary" name="phenotype"><label for="binary">binary</label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" id="nonrobust" name="nonrobust" checked><label for="nonrobust">non-robust</label>
-                        <input type="checkbox" id="robust" name="robust"><label for="robust">robust</label>
+                        <input type="checkbox" class="radio" id="nonrobust" name="se" checked><label for="nonrobust">non-robust</label>
+                        <input type="checkbox" class="radio" id="robust" name="se"><label for="robust">robust</label>
                     </td>
                 </tr>
 
@@ -69,8 +71,8 @@
                 <tr><td> <input type="text" id="variants" name="variants" size="20" style="height:15px;"></td></tr>
                 <tr>
                     <td>
-                        Compression: <input type="checkbox" class="phenotype" value="1" id="zlib" name="zlib" checked><label for="zlib">Zlib</label>
-                        <input type="checkbox" class="phenotype" value="1" id="zstd" name="zstd"><label for="zstd">ZSTD</label>
+                        Compression: <input type="checkbox" class="radio" value="1" id="zlib" name="compression" checked><label for="zlib">Zlib</label>
+                        <input type="checkbox" class="radio" value="1" id="zstd" name="compression"><label for="zstd">ZSTD</label>
                     </td>
                 </tr>
 
@@ -79,20 +81,30 @@
                 <tr class="thead">
                     <td colspan="1" , style="width:225px"><h4>Performance</h4></td>
                 </tr>
+                <tr>
+                    <td>
+                        <label for="processor">&nbsp;Processor: </label> <br />
+                        <input type="checkbox" class="radio" value="1" id="Intel" name="processor" checked><label for="Intel">Intel</label>
+                        <input type="checkbox" class="radio" value="1" id="AMD" name="processor" disabled="disabled"><label for="AMD">AMD</label>
+                    </td>
+                </tr>
+                <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+                <tr>
+                    <td>
+                        <label for="exposure">&nbsp;Matrix Library: </label> <br />
+                        <select id="Mathlib">
+                            <option value="LAPACK_BLAS" id="lapack_blas">LAPACK/BLAS</option>
+                            <option value="MKL" id="mkl">MKL</option>
+                            <option value="OpenBLAS" id="openblas">OpenBLAS</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
                 <tr><td><label for="threads">&nbsp;Total # of physical cores: </label></td></tr>
                 <tr><td> <input type="text" id="threads" name="threads" size="20" style="height:15px;"></td></tr>
                 <tr><td><label for="ss">&nbsp;# stream SNPs: </label></td></tr>
                 <tr><td> <input type="text" id="ss" name="ss" size="20" style="height:15px;"></td></tr>
-
-                <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
-
-                <tr class="thead">
-                    <td colspan="1" , style="width:225px"><h4>Cost</h4></td>
-                </tr>
-                <tr><td><label for="gb">&nbsp;$ per gigabyte (Gb): </label></td></tr>
-                <tr><td> <input type="text" id="gb" name="gb" size="20" style="height:15px;"></td></tr>
-                <tr><td><label for="cores">&nbsp;$ per core: </label></td></tr>
-                <tr><td> <input type="text" id="cores" name="cores" size="20" style="height:15px;"></td></tr>
 
                 <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
                 <tr><td> <input type="button" onclick="plot_df()" value="Submit"></td></tr>
@@ -162,7 +174,8 @@
 
             }
         </script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="radioCheckbox.js"></script>
         <br />
         <br />
         <br />
