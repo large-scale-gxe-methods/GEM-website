@@ -16,16 +16,16 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">GEM v1.0</a>
+                    <a class="navbar-brand" href="index.html">GEM</a>
                 </div>
 
                 <ul class="nav navbar-nav">
                     <li><a href="index.html">Home</a></li>
+                    <li><a href="installation.html">Installation</a></li>
                     <li><a href="file_formats.html">File Formats</a></li>
                     <li><a href="parameters.html">Parameters</a></li>
-                    <li><a href="examples.html">Examples</a></li>
+                    <li><a href="examples_and_debugging.html">Examples and Debugging</a></li>
                     <li><a href="resource_calculator.html">Resource Calculator</a></li>
-                    <li><a href="workflows.html">Workflows</a></li>
                 </ul>
             </div>
         </nav>
@@ -34,7 +34,7 @@
 
         <!-- Section of options -->
         <br />
-        <h2 align="center">GEM Parameters</h2>
+        <h2 align="center">Parameters</h2>
 
         <p align="center">
             <a href="#General_Options">General Options</a> |
@@ -48,7 +48,7 @@
         <!-- Search box -->
         <br />
         <p class="container-fluid" align="center">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search parameter name..." size="25">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="&nbsp;Search parameter name..." size="25">
         </p>
 
         <br />
@@ -63,7 +63,7 @@
 
             <!-- General Options -->
             <tr class="thead">
-                <td colspan="1" , style="width:225px"><h3 , id="General_Options">General Options</h3></td>
+                <td colspan="1" , style="width:225px"><h3 , id="General_Options"><u>General Options</u></h3></td>
             </tr>
             <tr class="thead2">
                 <td colspan="1"><h4>Flag</h4></td>
@@ -82,7 +82,7 @@
 
             <!-- Input File Options -->
             <tr class="thead">
-                <td colspan="1"><h3 , id="Input_File_Options">Input File Options</h3></td>
+                <td colspan="1"><h3 , id="Input_File_Options"><u>Input File Options</u></h3></td>
             </tr>
             <tr class="thead2">
                 <td colspan="1"><h4>Flag</h4></td>
@@ -90,7 +90,7 @@
             </tr>
             <tr><td height="35">--pheno-file</td><td height="35">Path to the phenotype file.</td></tr>
             <tr><td height="35">--bgen</td><td height="35">Path to the BGEN file.</td></tr>
-            <tr><td height="50">--sample</td><td height="50">Path to the sample file. Required when the BGEN file does not contain sample identifiers.</td></tr>
+            <tr><td height="75">--sample</td><td height="50">Path to the sample file. Required when the BGEN file does not contain sample identifiers. <br /> GEM will prioritize the .sample file over the BGEN sample identifier block if this parameter is included.</td></tr>
             <tr><td height="50">--out</td><td height="50">Full path and extension to where GEM should output results. <br /> <b>Default</b>: gem.out</td></tr>
 
 
@@ -103,7 +103,7 @@
 
             <!--Phenotype File Options-->
             <tr class="thead">
-                <td colspan="1"><h3 , id="Phenotype_File_Options">Phenotype File Options</h3></td>
+                <td colspan="1"><h3 , id="Phenotype_File_Options"><u>Phenotype File Options</u></h3></td>
             </tr>
             <tr class="thead2">
                 <td colspan="1"><h4>Flag</h4></td>
@@ -112,11 +112,11 @@
             <tr><td height="35">--sampleid-name</td><td height="35">Column name in the phenotype file that contains sample identifiers.</td></tr>
             <tr><td height="35">--pheno-name</td><td height="35">Column name in the phenotype file that contains the phenotype of interest.</td></tr>
             <tr><td height="50">--exposure-names</td><td height="50">One or more column names in the phenotype file naming the exposure(s) to be included in interaction tests.</td></tr>
-            <tr><td height="50">--int-covar-names</td><td height="50">Any column names in the phenotype file naming the covariate(s) for which interactions should be included for adjustment (mutually exclusive with --exposure-names).</td></tr>
-            <tr><td height="50">--covar-names</td><td height="50">Any column names in the phenotype file naming the covariates for which only main effects should be included for adjustment (mutually exclusive with both --exposure-names and --int-covar-names).</td></tr>
-            <tr><td height="35">--pheno-type</td><td height="35">0 indicates a continuous phenotype and 1 indicates a binary phenotype.</td></tr>
+            <tr><td height="60">--int-covar-names</td><td height="60">Any column names in the phenotype file naming the covariate(s) for which interactions should be included for adjustment (mutually exclusive with --exposure-names).</td></tr>
+            <tr><td height="60">--covar-names</td><td height="60">Any column names in the phenotype file naming the covariates for which only main effects should be included for adjustment (mutually exclusive with both --exposure-names and --int-covar-names).</td></tr>
+            <tr><td height="45">--pheno-type</td><td height="45">0 indicates a continuous phenotype and 1 indicates a binary phenotype.</td></tr>
             <tr><td height="50">--robust</td><td height="50">0 for model-based standard errors and 1 for robust standard errors. <br /> <span style="font-weight:bold">Default</span>: 0</td></tr>
-            <tr><td height="50">--tol</td><td height="50">Convergence tolerance for logistic regression.  <br /> <span style="font-weight:bold">Default</span>: 0.0000001</td></tr>
+            <tr><td height="55">--tol</td><td height="55">Convergence tolerance for logistic regression.  <br /> <span style="font-weight:bold">Default</span>: 0.0000001</td></tr>
             <tr><td height="50">--delim</td><td height="50">Delimiter separating values in the phenotype file. <br /> <span style="font-weight:bold">Default</span>: , (comma-separated)</td></tr>
             <tr><td height="50">--missing-value</td><td height="50">Indicates how missing values in the phenotype file are stored. <br /> <span style="font-weight:bold">Default</span>: NA</td></tr>
 
@@ -130,13 +130,15 @@
 
             <!--Filtering Options-->
             <tr class="thead">
-                <td colspan="1"><h3 , id="Filtering_Options">Filtering Options</h3></td>
+                <td colspan="1"><h3 , id="Filtering_Options"><u>Filtering Options</u></h3></td>
             </tr>
             <tr class="thead2">
                 <td colspan="1"><h4>Flag</h4></td>
                 <td colspan="1"><h4>Description</h4></td>
             </tr>
             <tr><td height="35">--maf</td><td height="50">Threshold to filter variants based on the minor allele frequency [0.0, 1.0]. <br /> <span style="font-weight:bold">Default</span>: 0.0001 </td></tr>
+            <tr><td height="50">--include-snp-file</td><td height="75">Path to file containing a subset of variants in the specified BGEN file (--bgen) to be used for analysis. The first line in this file is the header that specifies which variant identifier in the BGEN file is used for ID matching. This must be either 'snpid' or 'rsid' for BGEN files. There should be one variant identifier per line after the header. Variants not listed in this file will be excluded from analysis.<br /> 
+
 
 
             <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
@@ -147,7 +149,7 @@
 
             <!--Performance Options-->
             <tr class="thead">
-                <td colspan="1"><h3 , id="Performance_Options">Performance Options</h3></td>
+                <td colspan="1"><h3 , id="Performance_Options"><u>Performance Options</u></h3></td>
             </tr>
             <tr class="thead2">
                 <td colspan="1"><h4>Flag</h4></td>

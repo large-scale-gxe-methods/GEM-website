@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="gem_navbar.css">
+</head>
+
+
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">GEM</a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="installation.html">Installation</a></li>
+                <li><a href="file_formats.html">File Formats</a></li>
+                <li><a href="parameters.html">Parameters</a></li>
+                <li><a href="examples_and_debugging.html">Examples and Debugging</a></li>
+                <li><a href="resource_calculator.html">Resource Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <!-- Section of options -->
+    <br />
+    <h2 align="center">Installation</h2>
+
+    <p align="center">
+        <a href="#Download">Download</a> |
+        <a href="#Dependencies">Dependencies</a>
+        <br />
+        <a href="#Linux">Linux</a> |
+        <a href="#macOS">macOS</a> |
+        <a href="#Windows">Windows</a>
+    </p>
+
+    <br />
+    <br />
+    <br />
+
+
+
+
+    <!-- Option Table -->
+    <table id="option_table" style="margin-left:200px;table-layout:fixed;width:650px">
+
+        <!-- Genotype Files -->
+        <tr class="thead">
+            <td colspan="1" , style="width:200px"><h3 , id="Download"><u>Download</u></h3></td>
+        </tr>
+        <tr class="thead2">
+            <td colspan="1"><h4>GitHub</h4></td>
+        </tr>
+        <tr>
+            <td width="100">
+                <div style="line-height: 1.5em">
+                    The GEM software package can be downloaded at the Large Scale GxE Github website. <br /> <a href="https://github.com/large-scale-gxe-methods/GEM/releases"><u>https://github.com/large-scale-gxe-methods/GEM/releases</u></a>.
+                    <br /><br />We recommend installing the source code from the latest version of the software at the GitHub release page.
+                    <br /><br />Current version is 1.0.
+                </div>
+            </td>
+
+        </tr>
+
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+
+        <!-- Phenotype File -->
+        <tr class="thead">
+            <td colspan="1"><h3 , id="Dependencies"><u>Dependencies</u></h3></td>
+        </tr>
+
+        <tr class="thead2">
+            <td colspan="1"><h4>C/C++ Compiler</h4></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="line-height: 1.5em">
+                    GEM is a software written in C/C++11 and so a C/C++ compiler with C++11 support is needed.
+                    <br /> We have mostly compiled GEM with the GNU compiler collection (GCC) versions 7.5.0 &le; x &le; 9.3.0.
+
+                    <br /><br /> <u>Intel processors</u>:
+                    <br /> If the Intel C++ Compiler (ICC) is available, we recommend compiling GEM using ICC for an additional performance boost. 
+                    <br /><br /> ICC version 19.1.1.217 has been successfully tested.
+                </div>
+            </td>
+        </tr>
+
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+        <tr class="thead2">
+            <td colspan="1"><h4>LAPACK and BLAS</h4></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="line-height: 1.5em">
+                    The LAPACK(Linear Algebra PACKage) and BLAS(Basic Linear Algebra Subprograms) libraries are used to optimize matrix operations in GEM. <br /><br />LAPACK/BLAS version 3.9.0 has been successfully tested.
+
+                    <br /><br /> <u>Intel processors</u>:
+                    <br /> If the Math Kernal Library (MKL) is installed, we recommend linking LAPACK/BLAS through MKL for a greater performance boost. This can be done by replacing -llapack and -lblas  in the makefile with <br /> -lmkl_gf_lp64 -lmkl_sequential -lmkl_core and re-compiling the software.
+                    <br /><br /> It is important to compile with -lmkl_sequential since GEM already does multithreading across SNPs.
+                    <br /><br /> MKL versions 2019 &le; x &le; 2020 have been successfully tested.
+                    <br /><br /><br /> <u>AMD processors</u>:
+                    <br /> For AMD processors, OpenBLAS or ATLAS may be better alternatives for optimized matrix operations.
+                </div>
+            </td>
+        </tr>
+
+
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+
+        <tr class="thead2">
+            <td colspan="1"><h4>Boost C++ Libraries</h4></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="line-height: 1.5em">
+                    The <a href="https://www.boost.org/users/download/">Boost C++ libraries</a> are used for command-line, file management and multithreading purposes.
+                    <br /><br /> Boost versions 1.58.0 &le; x &le; 1.73.0 have been successfully  tested.
+                    <br />
+
+                    <div style="line-height: 2.0em">
+                        <br /> The following Boost libraries are required :
+
+                        <br /> &nbsp; &nbsp; &nbsp; 1. libboost_system
+                        <br /> &nbsp; &nbsp; &nbsp; 2. libboost_program_options
+                        <br /> &nbsp; &nbsp; &nbsp; 3. libboost_filesystem
+                        <br /> &nbsp; &nbsp; &nbsp; 4. libboost_thread
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+        <tr class="thead2">
+            <td colspan="1"><h4>Zstandard</h4></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="line-height: 1.5em">
+                    The Zstandard (ZSTD) library is required since GEM supports BGEN v1.3 with genotype blocks compressed in Zstandard format.
+                    <br /><br /> ZSTD versions 1.4.4 &le; x &le; 1.4.5 have been successfully tested.
+                    <br />
+
+                </div>
+            </td>
+        </tr>
+
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+        <tr class="thead">
+            <td colspan="1" , style="width:200px"><h3 , id="Linux"><u>Linux</u></h3></td>
+        </tr>
+        <tr>
+            <td width="100">
+                <div style="line-height: 1.5em">
+                    After downloading the latest release of GEM, run the following lines of code: <br />
+
+                    <div style="background-color:#f7f7f7;width:625px">
+                        <code>
+                            cd GEM-[version]/<br />
+                            cd src/ <br />
+                            make    <br />
+                        </code>
+                    </div>
+                    <br />
+                    Check if the installation of the software was successfully installed:
+                    <div style="background-color:#f7f7f7;width:625px">
+                        <code>
+                            ./GEM --help
+                        </code>
+                    </div>
+                    <br />
+                </div>
+            </td>
+
+        </tr>
+    </table>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+</body>
+
+
+</html>
+
+

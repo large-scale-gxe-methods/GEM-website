@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="gem_navbar.css">
+    <link rel="stylesheet" href="code_scrollbar.css">
+</head>
+
+
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">GEM</a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="installation.html">Installation</a></li>
+                <li><a href="file_formats.html">File Formats</a></li>
+                <li><a href="parameters.html">Parameters</a></li>
+                <li><a href="examples_and_debugging.html">Examples and Debugging</a></li>
+                <li><a href="resource_calculator.html">Resource Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <!-- Section of options -->
+    <br />
+    <h2 align="center">Examples</h2>
+
+    <p align="center">
+        <a href="#Examples">Examples</a> |
+        <a href="#Debugging">Debugging</a>
+    </p>
+
+
+    <!-- Search box -->
+    <br />
+
+    <br />
+    <br />
+    <br />
+
+    
+    <div style="margin-left:175px">
+
+
+        <h3 id="Examples"><u>Examples and Debugging</u></h3>
+        <h4> Running GEM </h4>
+
+        <div style="line-height: 1.5em">
+            At minimum, GEM requires the following parameters to have input value:
+        </div>
+        <br />
+        <div style="background-color:#f7f7f7;width:700px;line-height: 1.5em">
+            <code>
+                ./GEM <b>--bgen </b> example.bgen \ <br />
+                &emsp; &emsp; &emsp; <b>--pheno-file</b> example.pheno \ <br />
+                &emsp; &emsp; &emsp; <b>--sampleid-name</b> sampleid \  <br />
+                &emsp; &emsp; &emsp; <b>--pheno-name</b> pheno2 \   <br />
+                &emsp; &emsp; &emsp; <b>--pheno-type</b> 1 \ <br />
+                &emsp; &emsp; &emsp; <b>--exposure-names</b> cov1 <br />
+            </code>
+        </div>
+        <br />
+        <br />
+        <h4> Exposures </h4>
+        <div style="line-height: 1.5em">
+            Multiple exposures can be included for testing by passing the exposure names separated by a single space. <br />
+            GEM will then output coefficient estimates and variances associated with each exposure term.
+        </div>
+        <br />
+
+        <div class="scrollmenu">
+            <code>
+                ./GEM --bgen example.bgen  --pheno-file example.pheno --sampleid-name sampleid --pheno-name pheno2 --pheno-type 1 \ <br />
+                &emsp; &emsp; &emsp; <b>--exposure-names</b> cov1 cov2 cov3
+            </code>
+        </div>
+        <br />
+        <h4> Covariates </h4>
+
+        <div style="line-height: 1.5em">
+            Covariates can be adjusted for by using the <code>--covar-names</code> parameter. To include multiple covariates, <br />
+            pass the covariate names separated by a single space like below.
+        </div>
+        <br />
+        <div class="scrollmenu">
+            <code>
+                ./GEM --bgen example.bgen  --pheno-file example.pheno --sampleid-name sampleid --pheno-name pheno2 --pheno-type 1 \ <br />
+                &emsp; &emsp; &emsp; --exposure-names cov1 \ <br />
+                &emsp; &emsp; &emsp; <b>--covar-names</b> cov2 cov3
+            </code>
+        </div>
+        <br />
+        <h4> Interaction Covariates </h4>
+        <div style="line-height: 1.5em">
+            Interaction covariates can also be adjusted for using the <code>--int-covar-names</code> parameter. To include multiple <br />  interaction covariates,
+            pass the interaction covariate names separated by a single space.
+        </div>
+        <br />
+        <div class="scrollmenu">
+            <code>
+                ./GEM --bgen example.bgen  --pheno-file example.pheno --sampleid-name sampleid --pheno-name pheno2 --pheno-type 1 \ <br />
+                &emsp; &emsp; &emsp; --exposure-names cov1 \ <br />
+                &emsp; &emsp; &emsp; <b>--int-covar-names</b> cov2 cov3
+            </code>
+        </div>
+
+        <br />
+        <br />
+        <br />
+        Both the covariates and interaction covariates can be included in the model for adjusting.
+        <br />
+        <br />
+        <div style="background-color:#f7f7f7;width:600px;line-height: 1.5em">
+            <div class="scrollmenu">
+                <code>
+                    ./GEM --bgen example.bgen  --pheno-file example.pheno --sampleid-name sampleid --pheno-name pheno2 --pheno-type 1 \ <br />
+                    &emsp; &emsp; &emsp; --exposure-names cov1 \ <br />
+                    &emsp; &emsp; &emsp; <b>--covar-names</b> cov2 \ <br />
+                    &emsp; &emsp; &emsp; <b>--int-covar-names</b> cov3
+                </code>
+            </div>
+        </div>
+        <div />
+
+        <br />
+        <br />
+        <br />
+        <h4> Multithreading </h4>
+        <div style="line-height: 1.5em">
+            GEM can perform multithreading by using the <code>--threads</code> parameter. By default, GEM will use half the number of <br /> logical cores/ threads detected.
+            Each thread will get roughly an equal amount of variants for association testing.
+            <br />
+            <br />
+            We recommend using the number of physical cores / processing units for optimize performance.
+            <br /><br />
+            <div style="background-color:#f7f7f7;width:600px;line-height: 1.5em">
+                <div class="scrollmenu">
+                    <code>
+                        ./GEM --bgen example.bgen  --pheno-file example.pheno --sampleid-name sampleid --pheno-name pheno2 --pheno-type 1 \ <br />
+                        &emsp; &emsp; &emsp; --exposure-names cov1 \ <br />
+                        &emsp; &emsp; &emsp; --covar-names cov2 \ <br />
+                        &emsp; &emsp; &emsp; --int-covar-names cov3 \ <br />
+                        &emsp; &emsp; &emsp; <b>--threads</b> 4
+                    </code>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3 id="Debugging"><u>Debugging</u></h3><br />
+        <br />
+        <b>Jump to ERROR:</b> <br /><br />
+        <a href="#sample_size_to_0"><u>Sample size changes from N to 0</u></a>
+        <br />
+        <br />
+
+        <h4 id="sample_size_to_0">Sample size changes from N to 0</h4>
+        <div style="line-height: 1.5em;width:700px">
+            This error occurs when GEM cannot match the sample identifiers in the genotype file to sample identifiers in the phenotype file.
+            <br />
+            <br />
+            <u>BGEN files</u><br />
+            For BGEN files, the sample identifier matching process happens between the phenotype file and the sample identifier block within the BGEN file (see <a href="https://www.well.ox.ac.uk/~gav/bgen_format/spec/latest.html">here</a>)
+            <b>OR</b> the phenotype file and an external .sample file (see <a href="https://www.well.ox.ac.uk/~gav/qctool_v2/documentation/sample_file_formats.html">here</a>).
+            <br /><br />
+
+            Solutions: <br /><br />
+            &emsp; 1. If a .sample file (<code>--sample</code>) is included, be sure that the sample identifiers in the .sample file matches the <br /> &emsp;&ensp;&ensp; sample identifiers in the phenotype file.
+            Also make sure that the <b> number of sample identifiers in the  <br /> &emsp;&ensp;&ensp; .sample file matches with the .bgen file</b> or another error will occur.
+            Finally, the first column in the .sample  &emsp;&ensp;&ensp; file should contain the sample identifiers as shown <a href="https://www.well.ox.ac.uk/~gav/qctool_v2/documentation/sample_file_formats.html"><u>here</u></a>.
+            <br />
+            <br />
+            &emsp; 2. If no .sample file is included and the BGEN file contains a sample identifier block, a .sample file can be <br /> &emsp;&ensp;&ensp; used instead.
+            GEM will prioritize a .sample file over the BGEN sample identifier block for ID matching so <br /> &emsp;&ensp;&ensp; that users do not have to reconstruct the entire BGEN file to modify the sample identifier block.
+            A .sample <br /> &emsp;&ensp;&ensp; file should be included using the <code>--sample</code> parameter. Please also see <b>Solution 1</b> if a .sample file is used <br /> &emsp;&ensp;&ensp; instead.
+            <br />
+            <br />
+            &emsp; 3. If the user does not want to include a .sample file, ensure that the program used to generate the .bgen file <br /> &emsp;&ensp;&ensp; is placing the expected sample identifiers in the BGEN sample identifier block.
+            <br /><br /> &emsp;&ensp;&ensp; We have generally come across this error when using <a href="https://www.cog-genomics.org/plink/2.0/data#export"><u>PLINK 2.0</u></a> to convert different genotype file formats &emsp;&ensp;&ensp; (vcf/bed/pgen) to bgen format.
+            As shown in the link, PLINK 2.0 by default construct sample IDs as <br /> &emsp;&ensp;&ensp; "id-paste=maybefid,iid,maybesid".
+            <br />
+            <br /> &emsp;&ensp;&ensp; This can be solved by passing "id-paste=iid" instead as shown below. <br />
+
+            <div style="background-color:#f7f7f7;width:650px;line-height: 1.5em;margin-left:35px">
+                <div class="scrollmenu2">
+                    <code style="font-size:12px">
+                        ./plink2.exe --vcf my_vcf_file.vcf --export 'bgen-1.2' 'id-paste=iid' --out my_bgen_file
+                    </code>
+                </div>
+            </div>
+
+
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <script>
+            function myFunction() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("option_table");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
+</body>
+
+
+</html>
+
+

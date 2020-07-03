@@ -15,16 +15,16 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">GEM v1.0</a>
+                <a class="navbar-brand" href="index.html">GEM</a>
             </div>
 
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="installation.html">Installation</a></li>
                 <li><a href="file_formats.html">File Formats</a></li>
                 <li><a href="parameters.html">Parameters</a></li>
-                <li><a href="examples.html">Examples</a></li>
+                <li><a href="examples_and_debugging.html">Examples and Debugging</a></li>
                 <li><a href="resource_calculator.html">Resource Calculator</a></li>
-                <li><a href="workflows.html">Workflows</a></li>
             </ul>
         </div>
     </nav>
@@ -32,37 +32,12 @@
     <br />
 
 
-    <div class="division1" style="position:absolute">
 
-        <table id="option_table" bgcolor=#f8f8f8 width="150px">
-
-            <!-- General Options -->
-
-            <tr class="thead">
-                <td colspan="1"><p , id="Download" align="left">&nbsp;Download</p></td>
-            </tr>
-            <tr class="thead">
-                <td colspan="1"><p , id="Recent Updates" align="left">&nbsp;Recent Updates</p></td>
-            </tr>
-            <tr class="thead">
-                <td colspan="1"><p , id="Older Updates" align="left">&nbsp;Older Updates</p></td>
-            </tr>
-            <tr class="thead">
-                <td colspan="1"><p , id="Citation" align="left">&nbsp;Citation</p></td>
-            </tr>
-            <tr class="thead">
-                <td colspan="1"><p , id="License" align="left">&nbsp;License</p></td>
-            </tr>
-
-
-        </table>
-
-    </div>
-
-    <div id="tester" style="width:800px;height:500px;margin-left:200px;">
-        <div style="font-size:30px;" align="center">
+    <h4 align="center"></h4>
+    <div id="tester" style="width:800px;height:500px;margin-left:125px;">
+        <div style="font-size:30px;margin-left:340px">
             <b>
-                GEM v1.0
+                GEM 
             </b>
         </div>
 
@@ -75,6 +50,7 @@
         <p style="font-size:15px;line-height:1.5;" align="left">
             GEM (Gene-Environment interaction analysis for Millions of samples) is a software program for large-scale gene-environment interaction testing in samples from unrelated individuals. It enables genome-wide association studies in up to millions of samples while allowing for multiple exposures, control for genotype-covariate interactions, and robust inference.
         </p>
+        <br />
 
         <br />
         <br />
@@ -89,22 +65,21 @@
         </style>
 
 
-        <h2>Recent Updates: </h2>
-        <h3>Version 1.0 - March 31, 2020: </h3>
-        <div id="update_block">
+        <h2><u>Recent Updates</u>: </h2>
+        <h3><a href="https://github.com/large-scale-gxe-methods/GEM/releases/tag/v1.0"><u>Version 1.0</u></a> - March 31, 2020: </h3>
+        <div id="update_block" style="line-height: 1.5em">
             <table>
-                <tr><td height="25">- Column name in the phenotype file that contains sample identifiers.</td></tr>
-                <tr><td height="25">- Add a minor allele frequency filtering option <code>--maf</code> <br /></td></tr>
-                <tr><td height="25">- Multithreading is now done across SNPs by specifying the number of threads <code>--threads</code> <br /></td></tr>
-                <tr><td height="25">- Command-line only feature and removed the need for a parameter file <br /></td></tr>
-                <tr><td height="25">- Allow for interaction covariate adjustments <code>--int-covar-names</code> <br /></td></tr>
-                <tr><td height="25">- Support BGEN files with bi-allelic and <b>phased</b> genotypes <br /></td></tr>
-                <tr><td height="25">- Fix how GEM parses BGEN v1.1 <br /></td></tr>
-                <tr><td height="25">- Support BGEN v1.3 ZSTD compression method <br /></td></tr>
-                <tr><td height="25">- Default values for <code> --out , --robust, --tol, --delim, --missing-value, --threads, --stream-snps</code> <br />&nbsp;&nbsp;(see Parameters)</td></tr>
-                <tr><td height="25">- Changed some of the output messages</td></tr>
-                <tr><td height="25">- Changed the temporary bin file names to the value specified with <code>--out</code></td></tr>
-                <tr><td height="25">- Change header names with 'Main' to 'Marginal'</td></tr>
+                <tr><td height="25">12/13/2019 - Add a minor allele frequency filtering option <code>--maf</code> <br />
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Support BGEN files with bi-allelic and <b>phased</b> genotypes <br /></td></tr>
+                <tr><td height="25">02/04/2020 - Multithreading is now done across SNPs by specifying the number of threads <code>--threads</code> <br /></td></tr>
+                <tr><td height="25">03/27/2020 - Allow for interaction covariate adjustments <code>--int-covar-names</code> <br />                                      
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Command-line only feature and removed the need for a parameter file <br /> 
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Default values for some parameters (see <a href="parameters.html">Parameters</a>)</td></tr>
+                <tr><td height="25">04/01/2020 - Support BGEN v1.3 ZSTD compression method<br />                                      
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Support BGEN v1.1 <br /> 
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Temporary bin files are generated and renamed by appending the bin file number to <code>--out</code></td></tr>
+        
+                <tr><td height="25">04/14/2020 - Change header names with 'Main' to 'Marginal'</td></tr>
             </table>
         </div>
 
@@ -114,9 +89,17 @@
         <br />
         <br />
 
-        <h2>Citation: </h2>
-        <div>
-            TBA
+        <h3>Version 1.1 in development on Github (no release): </h3>
+        <div id="update_block" style="line-height: 1.5em">
+            <table>
+                <tr><td height="25">05/18/2020 - Allow GEM to subset the BGEN file based on a list of variants to include for analysis. <code>--include-snp-file</code> <br /></td></tr>
+                <tr><td height="25">06/26/2020 - Use matrix operation to adjust for covariates instead of for-loop. <br />
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Use the <a href="https://github.com/ebiggers/libdeflate"><u>libdeflate</u></a> package for faster zlib decompression of BGEN genotype blocks <br />
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbspCompile GEM with -O2 (optimizer flag) <br  />
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbspPrioritize BGEN sample file over the BGEN sample identifier block <br />
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbspError if phenotype (--pheno-name) is also included as an exposoure or covariate <br />
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbspSupport BGEN v1.1, v1.2 and v1.3 uncompressed genotype blocks.</td></tr>
+            </table>
         </div>
 
         <br />
@@ -124,8 +107,21 @@
         <br />
         <br />
 
-        <h2>License: </h2>
+        <h2><u>Citation</u>: </h2>
+        <div>
+            Westerman, K. E., Pham, D. T., Hong, L., Chen, Y., Sevilla-Gonz&aacute;lez, M., Sung, Y. J., Sun, Y. V., Morrison, A. C., Chen, H., Manning, A. K. Scalable and flexible gene-environment interaction analysis in millions of samples. (2020). bioRxiv. <a href="https://doi.org/10.1101/2020.05.13.090803">https://doi.org/10.1101/2020.05.13.090803 </a>.
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <h2><u>License</u>: </h2>
         <div style="font-size:15px;">
+            GEM : Gene-Environment interaction analysis for Millions of samples <br />
+            Copyright (C) 2018-2020  Liang Hong, Han Chen, Duy Pham <br />
+            <br />
             This program is free software: you can redistribute it and/or modify
             it under the terms of the GNU General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
