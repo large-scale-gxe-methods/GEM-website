@@ -37,7 +37,7 @@
     <div id="tester" style="width:800px;height:500px;margin-left:125px;">
         <div style="font-size:30px;margin-left:340px">
             <b>
-                GEM 
+                GEM
             </b>
         </div>
 
@@ -66,41 +66,59 @@
 
 
         <h2><u>Recent Updates</u>: </h2>
+        <h3><a href="https://github.com/large-scale-gxe-methods/GEM/releases/tag/v1.1"><u>Version 1.1</u></a> - July 21, 2020: </h3>
+        <div id="update_block" style="line-height: 1.5em">
+            <table>
+                <tr><td height="25">05/18/2020 - Allow GEM to subset the BGEN file based on a list of variants to include for analysis. <code>--include-snp-file</code> <br /></td></tr>
+                <tr>
+                    <td height="25">
+                        06/26/2020 - Use matrix operation to adjust for covariates instead of for-loop. <br />
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp; Use the <a href="https://github.com/ebiggers/libdeflate"><u>libdeflate</u></a> package for faster zlib decompression of BGEN genotype blocks <br />
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp; Compile GEM with -O2 (optimizer flag) <br />
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp; Prioritize BGEN sample file over the BGEN sample identifier block <br />
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp; Error if phenotype (--pheno-name) is also included as an exposoure or covariate <br />
+                        06/30/2020 - Support BGEN v1.1, v1.2 and v1.3 uncompressed genotype blocks.  <br />
+                        07/15/2020 - Fix major printing bug.  <br />
+                        07/21/2020 - Handle missing genotypes in BGEN files.  <br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
         <h3><a href="https://github.com/large-scale-gxe-methods/GEM/releases/tag/v1.0"><u>Version 1.0</u></a> - March 31, 2020: </h3>
         <div id="update_block" style="line-height: 1.5em">
             <table>
-                <tr><td height="25">12/13/2019 - Add a minor allele frequency filtering option <code>--maf</code> <br />
-                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Support BGEN files with bi-allelic and <b>phased</b> genotypes <br /></td></tr>
+                <tr>
+                    <td height="25">
+                        12/13/2019 - Add a minor allele frequency filtering option <code>--maf</code> <br />
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Support BGEN files with bi-allelic and <b>phased</b> genotypes <br />
+                    </td>
+                </tr>
                 <tr><td height="25">02/04/2020 - Multithreading is now done across SNPs by specifying the number of threads <code>--threads</code> <br /></td></tr>
-                <tr><td height="25">03/27/2020 - Allow for interaction covariate adjustments <code>--int-covar-names</code> <br />                                      
-                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Command-line only feature and removed the need for a parameter file <br /> 
-                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Default values for some parameters (see <a href="parameters.html">Parameters</a>)</td></tr>
-                <tr><td height="25">04/01/2020 - Support BGEN v1.3 ZSTD compression method<br />                                      
-                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Support BGEN v1.1 <br /> 
-                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Temporary bin files are generated and renamed by appending the bin file number to <code>--out</code></td></tr>
-        
+                <tr>
+                    <td height="25">
+                        03/27/2020 - Allow for interaction covariate adjustments <code>--int-covar-names</code> <br />
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Command-line only feature and removed the need for a parameter file <br />
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Default values for some parameters (see <a href="parameters.html">Parameters</a>)
+                    </td>
+                </tr>
+                <tr>
+                    <td height="25">
+                        04/01/2020 - Support BGEN v1.3 ZSTD compression method<br />
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Support BGEN v1.1 <br />
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Temporary bin files are generated and renamed by appending the bin file number to <code>--out</code>
+                    </td>
+                </tr>
+
                 <tr><td height="25">04/14/2020 - Change header names with 'Main' to 'Marginal'</td></tr>
             </table>
         </div>
 
-
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <h3>Version 1.1 in development on Github (no release): </h3>
-        <div id="update_block" style="line-height: 1.5em">
-            <table>
-                <tr><td height="25">05/18/2020 - Allow GEM to subset the BGEN file based on a list of variants to include for analysis. <code>--include-snp-file</code> <br /></td></tr>
-                <tr><td height="25">06/26/2020 - Use matrix operation to adjust for covariates instead of for-loop. <br />
-                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Use the <a href="https://github.com/ebiggers/libdeflate"><u>libdeflate</u></a> package for faster zlib decompression of BGEN genotype blocks <br />
-                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbspCompile GEM with -O2 (optimizer flag) <br  />
-                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbspPrioritize BGEN sample file over the BGEN sample identifier block <br />
-                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbspError if phenotype (--pheno-name) is also included as an exposoure or covariate <br />
-                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbspSupport BGEN v1.1, v1.2 and v1.3 uncompressed genotype blocks.</td></tr>
-            </table>
-        </div>
 
         <br />
         <br />

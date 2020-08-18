@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="gem_navbar.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+</head>
+
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">GEM v1.0</a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="file_formats.html">File Formats</a></li>
+                <li><a href="parameters.html">Parameters</a></li>
+                <li><a href="examples.html">Examples</a></li>
+                <li><a href="resource_calculator.html">Resource Calculator</a></li>
+                <li><a href="workflows.html">Workflows</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="division1" style="position:absolute">
+
+        <table id="option_table" bgcolor=#f8f8f8>
+
+            <!-- General Options -->
+            <tr class="thead">
+                <td colspan="1" , style="width:225px"><h4>Phenotype file</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="radio" value="1" id="continuous" name="phenotype" checked><label for="continuous">continuous</label>
+                    <input type="checkbox" class="radio" value="1" id="binary" name="phenotype"><label for="binary">binary</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="radio" id="nonrobust" name="se" checked><label for="nonrobust">non-robust</label>
+                    <input type="checkbox" class="radio" id="robust" name="se"><label for="robust">robust</label>
+                </td>
+            </tr>
+
+            <tr><td><label for="samples">&nbsp;# samples: </label></td></tr>
+            <tr><td> <input type="text" id="samples" name="samples" size="20" style="height:15px;"></td></tr>
+            <tr><td><label for="covar">&nbsp;# covariates: </label></td></tr>
+            <tr><td> <input type="text" id="covar" name="covar" size="20" style="height:15px;"></td></tr>
+            <tr><td><label for="intcovar">&nbsp;# interaction covariates: </label></td></tr>
+            <tr><td> <input type="text" id="intcovar" name="intcovar" size="20" style="height:15px;"></td></tr>
+            <tr><td><label for="exposure">&nbsp;# exposures: </label></td></tr>
+            <tr><td> <input type="text" id="exposure" name="exposure" size="20" style="height:15px;"></td></tr>
+
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+            <tr class="thead">
+                <td colspan="1" , style="width:225px"><h4>BGEN file</h4></td>
+            </tr>
+            <tr><td><label for="bgen_samples">&nbsp;# samples: </label></td></tr>
+            <tr><td> <input type="text" id="bgen_samples" name="bgen_samples" size="20" style="height:15px;"></td></tr>
+            <tr><td><label for="variants">&nbsp;# variants: </label></td></tr>
+            <tr><td> <input type="text" id="variants" name="variants" size="20" style="height:15px;"></td></tr>
+            <tr>
+                <td>
+                    Compression: <input type="checkbox" class="radio" value="1" id="zlib" name="compression" checked><label for="zlib">Zlib</label>
+                    <input type="checkbox" class="radio" value="1" id="zstd" name="compression"><label for="zstd">ZSTD</label>
+                </td>
+            </tr>
+
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+            <tr class="thead">
+                <td colspan="1" , style="width:225px"><h4>Performance</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="processor">&nbsp;Processor: </label> <br />
+                    <input type="checkbox" class="radio" value="1" id="Intel" name="processor" checked><label for="Intel">Intel</label>
+                    <input type="checkbox" class="radio" value="1" id="AMD" name="processor" disabled="disabled"><label for="AMD">AMD</label>
+                </td>
+            </tr>
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr>
+                <td>
+                    <label for="exposure">&nbsp;Matrix Library: </label> <br />
+                    <select id="Mathlib">
+                        <option value="LAPACK_BLAS" id="lapack_blas">LAPACK/BLAS</option>
+                        <option value="MKL" id="mkl">MKL</option>
+                        <option value="OpenBLAS" id="openblas">OpenBLAS</option>
+                    </select>
+
+                </td>
+            </tr>
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr><td><label for="threads">&nbsp;Total # of physical cores: </label></td></tr>
+            <tr><td> <input type="text" id="threads" name="threads" size="20" style="height:15px;"></td></tr>
+            <tr><td><label for="ss">&nbsp;# stream SNPs: </label></td></tr>
+            <tr><td> <input type="text" id="ss" name="ss" size="20" style="height:15px;"></td></tr>
+
+            <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+            <tr><td> <input type="button" onclick="doIt()" value="Submit"></td></tr>
+        </table>
+    </div>
+
+    <div class="tester" style="width:600px;height:300px;margin-left:300px;">
+        <table id="example" class="display" style="width:100%"> </table>
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="radioCheckbox.js"></script>
+    <script src="Script2.js"></script>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+</body>
+</html>
+
+
