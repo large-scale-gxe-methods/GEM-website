@@ -24,7 +24,7 @@
                 <li><a href="file_formats.html">File Formats</a></li>
                 <li><a href="parameters.html">Parameters</a></li>
                 <li><a href="examples_and_debugging.html">Examples and Debugging</a></li>
-                <li><a href="resource_calculator.html">Resource Calculator</a></li>
+                <!--<li><a href="resource_calculator.html">Resource Calculator</a></li>-->
             </ul>
         </div>
     </nav>
@@ -66,6 +66,28 @@
 
 
         <h2><u>Recent Updates</u>: </h2>
+        <h3><a href="https://github.com/large-scale-gxe-methods/GEM/releases/tag/v1.2"><u>Version 1.2</u></a> - January 22, 2021: </h3>
+        <div id="update_block" style="line-height: 1.5em">
+            <table>
+                <tr>
+                    <td height="25">
+                        12/15/2020 - Fix issue to allow for space and tab delimited phenotype files. <br />
+                        12/09/2020 - Allow for centering and scaling of exposures and covariates. <br />
+                        12/02/2020 - Update calculations for model-based joint test <br />
+                        11/23/2020 - Update calculations for robust joint test <br />
+                        11/17/2020 - Output covariance, coefficients and standard errors to the log.  <br />
+                        10/13/2020 - Change Allele1 and Allele2 in outfile file to Non_Effect_Allele and Effect_Allele.  <br />
+                        10/13/2020 - Fix bug when phenotype is binary and there are missing genotypes.  <br />
+                        09/22/2020 - Support PGEN/BED files.  <br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+        <br />
+        <br />
+
         <h3><a href="https://github.com/large-scale-gxe-methods/GEM/releases/tag/v1.1"><u>Version 1.1</u></a> - July 21, 2020: </h3>
         <div id="update_block" style="line-height: 1.5em">
             <table>
@@ -82,40 +104,6 @@
                         07/21/2020 - Handle missing genotypes in BGEN files.  <br />
                     </td>
                 </tr>
-            </table>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <h3><a href="https://github.com/large-scale-gxe-methods/GEM/releases/tag/v1.0"><u>Version 1.0</u></a> - March 31, 2020: </h3>
-        <div id="update_block" style="line-height: 1.5em">
-            <table>
-                <tr>
-                    <td height="25">
-                        12/13/2019 - Add a minor allele frequency filtering option <code>--maf</code> <br />
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Support BGEN files with bi-allelic and <b>phased</b> genotypes <br />
-                    </td>
-                </tr>
-                <tr><td height="25">02/04/2020 - Multithreading is now done across SNPs by specifying the number of threads <code>--threads</code> <br /></td></tr>
-                <tr>
-                    <td height="25">
-                        03/27/2020 - Allow for interaction covariate adjustments <code>--int-covar-names</code> <br />
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Command-line only feature and removed the need for a parameter file <br />
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Default values for some parameters (see <a href="parameters.html">Parameters</a>)
-                    </td>
-                </tr>
-                <tr>
-                    <td height="25">
-                        04/01/2020 - Support BGEN v1.3 ZSTD compression method<br />
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Support BGEN v1.1 <br />
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Temporary bin files are generated and renamed by appending the bin file number to <code>--out</code>
-                    </td>
-                </tr>
-
-                <tr><td height="25">04/14/2020 - Change header names with 'Main' to 'Marginal'</td></tr>
             </table>
         </div>
 
@@ -138,7 +126,7 @@
         <h2><u>License</u>: </h2>
         <div style="font-size:15px;">
             GEM : Gene-Environment interaction analysis for Millions of samples <br />
-            Copyright (C) 2018-2020  Liang Hong, Han Chen, Duy Pham <br />
+            Copyright (C) 2018-2021  Liang Hong, Han Chen, Duy Pham <br />
             <br />
             This program is free software: you can redistribute it and/or modify
             it under the terms of the GNU General Public License as published by

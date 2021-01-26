@@ -25,7 +25,7 @@
                     <li><a href="file_formats.html">File Formats</a></li>
                     <li><a href="parameters.html">Parameters</a></li>
                     <li><a href="examples_and_debugging.html">Examples and Debugging</a></li>
-                    <li><a href="resource_calculator.html">Resource Calculator</a></li>
+                    <!--<li><a href="resource_calculator.html">Resource Calculator</a></li>-->
                 </ul>
             </div>
         </nav>
@@ -80,7 +80,7 @@
 
 
 
-            <!-- Input File Options -->
+            <!-- Input/Output File Options -->
             <tr class="thead">
                 <td colspan="1"><h3 , id="Input_File_Options"><u>Input File Options</u></h3></td>
             </tr>
@@ -90,8 +90,16 @@
             </tr>
             <tr><td height="35">--pheno-file</td><td height="35">Path to the phenotype file.</td></tr>
             <tr><td height="35">--bgen</td><td height="35">Path to the BGEN file.</td></tr>
-            <tr><td height="75">--sample</td><td height="50">Path to the sample file. Required when the BGEN file does not contain sample identifiers. <br /> GEM will prioritize the .sample file over the BGEN sample identifier block if this parameter is included.</td></tr>
-            <tr><td height="50">--out</td><td height="50">Full path and extension to where GEM should output results. <br /> <b>Default</b>: gem.out</td></tr>
+            <tr><td height="70">--sample</td><td height="50">Path to the sample file. Required when the BGEN file does not contain sample identifiers. <br /> GEM will prioritize the .sample file over the BGEN sample identifier block if this parameter <br /> is included.</td></tr>
+            <tr><td height="35">--pfile</td><td height="50">Path and prefix to the .pgen, .pvar, and .psam files. <br /> If this flag is used, then --pgen/--pvar/--psam don’t need to be specified.</td></tr>
+            <tr><td height="35">--pgen</td><td height="35">Path to the .pgen file.</td></tr>
+            <tr><td height="35">--pvar</td><td height="35">Path to the .pvar file.</td></tr>
+            <tr><td height="35">--psam</td><td height="35">Path to the .psam file.</td></tr>
+            <tr><td height="35">--bfile</td><td height="50">Path and prefix to the .bed, .bim, and .fam files. <br /> If this flag is used, then --bed/--bim/--fam don’t need to be specified.</td></tr>
+            <tr><td height="35">--bed</td><td height="35">Path to the .bed file.</td></tr>
+            <tr><td height="35">--bim</td><td height="35">Path to the .bim file.</td></tr>
+            <tr><td height="35">--fam</td><td height="35">Path to the .fam file.</td></tr>
+            <tr><td height="35">--out</td><td height="50">Full path and extension to where GEM should output results. <br /> <b>Default</b>: gem.out</td></tr>
 
 
 
@@ -112,14 +120,15 @@
             <tr><td height="35">--sampleid-name</td><td height="35">Column name in the phenotype file that contains sample identifiers.</td></tr>
             <tr><td height="35">--pheno-name</td><td height="35">Column name in the phenotype file that contains the phenotype of interest.</td></tr>
             <tr><td height="50">--exposure-names</td><td height="50">One or more column names in the phenotype file naming the exposure(s) to be included in interaction tests.</td></tr>
-            <tr><td height="60">--int-covar-names</td><td height="60">Any column names in the phenotype file naming the covariate(s) for which interactions should be included for adjustment (mutually exclusive with --exposure-names).</td></tr>
+            <tr><td height="50">--int-covar-names</td><td height="60">Any column names in the phenotype file naming the covariate(s) for which interactions should be included for adjustment (mutually exclusive with --exposure-names).</td></tr>
             <tr><td height="60">--covar-names</td><td height="60">Any column names in the phenotype file naming the covariates for which only main effects should be included for adjustment (mutually exclusive with both --exposure-names and --int-covar-names).</td></tr>
             <tr><td height="45">--pheno-type</td><td height="45">0 indicates a continuous phenotype and 1 indicates a binary phenotype.</td></tr>
             <tr><td height="50">--robust</td><td height="50">0 for model-based standard errors and 1 for robust standard errors. <br /> <span style="font-weight:bold">Default</span>: 0</td></tr>
-            <tr><td height="55">--tol</td><td height="55">Convergence tolerance for logistic regression.  <br /> <span style="font-weight:bold">Default</span>: 0.0000001</td></tr>
+            <tr><td height="45">--tol</td><td height="55">Convergence tolerance for logistic regression.  <br /> <span style="font-weight:bold">Default</span>: 0.0000001</td></tr>
             <tr><td height="50">--delim</td><td height="50">Delimiter separating values in the phenotype file. <br /> <span style="font-weight:bold">Default</span>: , (comma-separated)</td></tr>
             <tr><td height="50">--missing-value</td><td height="50">Indicates how missing values in the phenotype file are stored. <br /> <span style="font-weight:bold">Default</span>: NA</td></tr>
-
+            <tr><td height="55">--center</td><td height="50">0 for no centering to be done and 1 to center ALL exposures and covariates. <br /> <span style="font-weight:bold">Default</span>: 1</td></tr>
+            <tr><td height="75">--scale</td><td height="50">0 for no scaling to be done and 1 to scale ALL exposures and covariates by the standard deviation. <br /> <span style="font-weight:bold">Default</span>: 0</td></tr>
 
 
             <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
@@ -138,7 +147,7 @@
             </tr>
             <tr><td height="35">--maf</td><td height="50">Threshold to filter variants based on the minor allele frequency [0.0, 1.0]. <br /> <span style="font-weight:bold">Default</span>: 0.0001 </td></tr>
             <tr><td height="35">--miss-geno-cutoff</td><td height="50">Threshold to filter variants based on the missing genotype rate. <br /> <span style="font-weight:bold">Default</span>: 0.05 </td></tr>
-            <tr><td height="50">--include-snp-file</td><td height="75">Path to file containing a subset of variants in the specified BGEN file (--bgen) to be used for analysis. The first line in this file is the header that specifies which variant identifier in the BGEN file is used for ID matching. This must be either 'snpid' or 'rsid' for BGEN files. There should be one variant identifier per line after the header. Variants not listed in this file will be excluded from analysis.<br />
+            <tr><td height="100">--include-snp-file</td><td height="75">Path to file containing a subset of variants in the specified BGEN file (--bgen) to be used for analysis. The first line in this file is the header that specifies which variant identifier in the BGEN file is used for ID matching. This must be either 'snpid' or 'rsid' for BGEN files. There should be one variant identifier per line after the header. Variants not listed in this file will be excluded from analysis.<br />
 
 
 

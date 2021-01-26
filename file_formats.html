@@ -25,7 +25,7 @@
                 <li><a href="file_formats.html">File Formats</a></li>
                 <li><a href="parameters.html">Parameters</a></li>
                 <li><a href="examples_and_debugging.html">Examples and Debugging</a></li>
-                <li><a href="resource_calculator.html">Resource Calculator</a></li>
+                <!--<li><a href="resource_calculator.html">Resource Calculator</a></li>-->
             </ul>
         </div>
     </nav>
@@ -58,14 +58,49 @@
             <td colspan="1" , style="width:200px"><h3 , id="Genotype_Files"><u>Genotype Files</u></h3></td>
         </tr>
         <tr class="thead2">
+            <td colspan="1"><h4>.bed</h4></td>
+        </tr>
+        <tr>
+            <td width="100">
+                <div style="line-height: 1.5em">
+                    PLINK <a href="https://www.cog-genomics.org/plink/1.9/formats#bed"><u>.bed</u></a> files are supported in GEM versions &ge; 1.2. The .bed files must be in variant-major format and accompanied by space or tab delimited .bim and .fam files.
+
+                    <br /><br /> <a href="https://www.cog-genomics.org/plink/1.9/formats#bim"><u>.bim</u></a> files should be a 5 or 6 column text file with no header line and one line per variant. The ordering of the columns should be chromosome, variant identifier, cM (optional), base-pair coordinate, ALT allele, and REF allele. The ALT allele is counted in association testing.
+                    <br /><br /> <a href="https://www.cog-genomics.org/plink/1.9/formats#fam"><u>.fam</u></a> files should contain 6 columns with no header line and one line per sample. The ordering of the columns should be family id (FID), individual (IID), individual ID of father, individual ID of mother, sex code, and phenotype value. GEM will use the IID column for sample identifier matching with the phenotype file.
+                </div>
+            </td>
+
+        </tr>
+
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+        <tr class="thead2">
             <td colspan="1"><h4>.bgen</h4></td>
         </tr>
         <tr>
             <td width="100">
                 <div style="line-height: 1.5em">
-                    GEM supports version 1.1, 1.2 and 1.3 binary GEN (BGEN) genotype files described <a href="https://www.well.ox.ac.uk/~gav/bgen_format/spec/latest.html"><u>here</u></a>.
-                    <br /><br />A .sample file should be included with the .bgen file if there is not a sample identifier block within the .bgen file. This can be done by including the <code>--sample</code> flag.
-                    <br /><br />In GEM versions &ge; 1.1, if the .sample file is included and the .bgen file does contain a sample identifier block, GEM will prioritize the .sample file over the sample identifier block for sample identifier matching.
+                    GEM supports version 1.1, 1.2 and 1.3 binary GEN (BGEN) genotype files described <a href="https://www.well.ox.ac.uk/~gav/bgen_format/spec/latest.html"><u>here</u></a>. All non-biallelic variants should be filtered from the .bgen file before running any analysis.
+                    <br /><br />A .sample file should be included with the .bgen file if there is not a sample identifier block within the .bgen file. In GEM versions &ge; 1.1, if the .sample file is included and the .bgen file contains a sample identifier block, GEM will prioritize the .sample file over the sample identifier block for sample identifier matching.
+                </div>
+            </td>
+
+        </tr>
+
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+        <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
+
+        <tr class="thead2">
+            <td colspan="1"><h4>.pgen</h4></td>
+        </tr>
+        <tr>
+            <td width="100">
+                <div style="line-height: 1.5em">
+                    PLINK 2 <a href="https://www.cog-genomics.org/plink/2.0/formats#pgen"><u>.pgen</u></a> files are supported in GEM versions &ge; 1.2. The .pgen files must contain only bi-allelic variants and accompanied by tab delimited .pvar and .psam files.
+
+                    <br /><br /> <a href="https://www.cog-genomics.org/plink/2.0/formats#pvar"><u>.pvar</u></a> file is PLINK 2 variant information file. If header lines are present, the last header line should start with #CHROM for the first column and the following columns must also be present: POS, ID, REF, and ALT. If no header line beginning with #CHROM is present, the columns are assumed to be stored in .bim file order. All header lines beginning with '##' are ignored. GEM will use the ALT allele for association testing.
+                    <br /><br /> <a href="https://www.cog-genomics.org/plink/2.0/formats#psam"><u>.psam</u></a> file is PLINK 2 sample information file. If header lines are present, then the last header line should start with #IID (if the first column is not #FID) or contain an IID column (if the first column is #FID) to be used for sample identifier matching with the phenotype file. If no header line beginning with #FID or #IID is present, then the columns are assumed to be in .fam file order. All header lines beginning with '##' are ignored.
                 </div>
             </td>
 
@@ -87,10 +122,10 @@
         </tr>
         <tr>
             <td>
-            <div style="line-height: 1.5em">
-                 The phenotype file does not need to have the .pheno extension and can be a different type of extension (.csv, .txt, etc...). However, the appropriate delimiter of the phenotype file should be specified using the <code>--delim</code> parameter. The default delimiter for phenotype files in GEM is , (comma-seperated). <br />
-                 <br />A phenotype file should contain a sample identifer column, along with the phenotype, covariate, interactive covariate and exposure columns. The ordering of the columns does not matter. <br />The first row of the phenotype file should contain the header name for each column.
-            </div>
+                <div style="line-height: 1.5em">
+                    A phenotype file should contain columns with a header for the sample identifer, the phenotype, covariates, interaction covariates, and exposures. All inputs must be coded numerically.
+                    <br /><br />The phenotype file does not need to have the .pheno extension and can be a different type of extension (.csv, .txt, etc...) with the appropriate delimiter specified using <code>--delim</code>.
+                </div>
             </td>
         </tr>
 
@@ -112,33 +147,33 @@
             <td>
                 <div style="line-height: 1.5em">
                     The <code>--out</code> flag should contain the full path and extension to where GEM output results. Otherwise, GEM will use <code>gem.out</code> as the default output file name and results will most likely be located in the directory where GEM was executed.
-                 </div>
-                    
+                </div>
+
                 <br /><br /><br />Below is a table describing the column names in the output file. <br /><br />
                 <table id="option_table" style="table-layout:fixed;">
 
-                        <!-- General Options -->
-                        <tr class="thead">
-                            <td colspan="1" , style="margin-left=20px;width:225px"></td>
-                        </tr>
-                        <tr class="thead2" , style="background-color: #f2f2f2">
-                            <td colspan="1" , align="center"><h4>Header</h4></td>
-                            <td colspan="1" , align="center"><h4>Description</h4></td>
-                        </tr>
-                        <tr><td height="35" , align="center">SNPID</td><td height="35" , align="center">The SNP identifier as retrieved from the BGEN file.</td></tr>
-                        <tr style="background-color: #f2f2f2"><td height="35" , align="center">rsID</td><td height="35" , align="center">The reference SNP ID number.</td></tr>
-                        <tr><td height="35" , align="center">CHR</td><td height="35" , align="center">The chromosome of the SNP.</td></tr>
-                        <tr style="background-color: #f2f2f2"><td height="35" , align="center">POS</td><td height="35" , align="center">The physical position of the SNP.</td></tr>
-                        <tr><td height="35" , align="center">Allele1</td><td height="35" , align="center">The first allele in the BGEN file.</td></tr>
-                        <tr style="background-color: #f2f2f2"><td height="55" , align="center">Allele2</td><td height="55" , align="center">The second allele in the BGEN file <br />that is counted in association testing.</td></tr>
-                        <tr><td height="35" , align="center">AF</td><td height="35" , align="center">The allele frequency of the second allele in the BGEN file.</td></tr>
-                        <tr style="background-color: #f2f2f2"><td height="35" , align="center">Beta_Marginal</td><td height="35" , align="center">The coefficient estimate for the marginal genetic effect.</td></tr>
-                        <tr><td height="55" , align="center">Var_Beta_Marginal</td><td height="35" , align="center">The variance associated with the marginal genetic effect estimate.</td></tr>
-                        <tr style="background-color: #f2f2f2"><td height="55" , align="center">Beta_Interaction_k</td><td height="35" , align="center">The coefficient estimate for the kth exposure term, <br /> where <code>k = {1..length(--exposure-names)}</code>.</td></tr>
-                        <tr><td height="55" , align="center">Var_Beta_Interaction_k_ j</td><td height="35" , align="center">The variance associated with the kth and jth exposure term, <br /> where <code> j = {1..length(--exposure-names)}</code>.</td></tr>
-                        <tr style="background-color: #f2f2f2"><td height="35" , align="center">P_Value_Marginal</td><td height="35" , align="center">Marginal genetic effect p-value.</td></tr>
-                        <tr><td height="35" , align="center">P_Value_Interaction</td><td height="35" , align="center">Interaction effect p-value.</td></tr>
-                        <tr style="background-color: #f2f2f2"><td height="35" , align="center">P_Value_Joint</td><td height="35" , align="center">Joint test p-value (K+1 degrees of freedom test of genetic effect).</td></tr>
+                    <!-- General Options -->
+                    <tr class="thead">
+                        <td colspan="1" , style="margin-left=20px;width:225px"></td>
+                    </tr>
+                    <tr class="thead2" , style="background-color: #f2f2f2">
+                        <td colspan="1" , align="center"><h4>Header</h4></td>
+                        <td colspan="1" , align="center"><h4>Description</h4></td>
+                    </tr>
+                    <tr><td height="35" , align="center">SNPID</td><td height="35" , align="center">The SNP identifier as retrieved from the genotype file.</td></tr>
+                    <tr style="background-color: #f2f2f2"><td height="35" , align="center">RSID</td><td height="35" , align="center">The reference SNP ID number (BGEN only).</td></tr>
+                    <tr><td height="35" , align="center">CHR</td><td height="35" , align="center">The chromosome of the SNP.</td></tr>
+                    <tr style="background-color: #f2f2f2"><td height="35" , align="center">POS</td><td height="35" , align="center">The physical position of the SNP.</td></tr>
+                    <tr><td height="35" , align="center">Allele1</td><td height="35" , align="center">The first allele in the BGEN file.</td></tr>
+                    <tr style="background-color: #f2f2f2"><td height="55" , align="center">Allele2</td><td height="55" , align="center">The second allele in the BGEN file <br />that is counted in association testing.</td></tr>
+                    <tr><td height="35" , align="center">AF</td><td height="35" , align="center">The allele frequency of the second allele in the BGEN file.</td></tr>
+                    <tr style="background-color: #f2f2f2"><td height="35" , align="center">Beta_Marginal</td><td height="35" , align="center">The coefficient estimate for the marginal genetic effect.</td></tr>
+                    <tr><td height="55" , align="center">Var_Beta_Marginal</td><td height="35" , align="center">The variance associated with the marginal genetic effect estimate.</td></tr>
+                    <tr style="background-color: #f2f2f2"><td height="55" , align="center">Beta_Interaction_k</td><td height="35" , align="center">The coefficient estimate for the kth exposure term, <br /> where <code>k = {1..length(--exposure-names)}</code>.</td></tr>
+                    <tr><td height="55" , align="center">Var_Beta_Interaction_k_ j</td><td height="35" , align="center">The variance associated with the kth and jth exposure term, <br /> where <code> j = {1..length(--exposure-names)}</code>.</td></tr>
+                    <tr style="background-color: #f2f2f2"><td height="35" , align="center">P_Value_Marginal</td><td height="35" , align="center">Marginal genetic effect p-value.</td></tr>
+                    <tr><td height="35" , align="center">P_Value_Interaction</td><td height="35" , align="center">Interaction effect p-value.</td></tr>
+                    <tr style="background-color: #f2f2f2"><td height="35" , align="center">P_Value_Joint</td><td height="35" , align="center">Joint test p-value (K+1 degrees of freedom test of genetic effect).</td></tr>
                 </table>
             </td>
         </tr>
@@ -161,9 +196,9 @@
         <tr>
             <td>
                 <div style="line-height: 1.5em">
-                    A .sample file is required when the BGEN file does not include a sample identifier block. <br />Include a .sample file with the <code>--sample</code> option. <br />
-                    <br />Formats for the .sample file should follow QCTOOLv2 format described <a href="https://www.well.ox.ac.uk/~gav/qctool_v2/documentation/sample_file_formats.html"><u>here</u></a>.
-                    <br />The first column in the .sample file should always be the ID column used for ID matching with the phenotype file.
+                    A .sample file is required when the BGEN file does not include a sample identifier block.
+                    <br /><br />Formats for the .sample file should follow QCTOOLv2 format described <a href="https://www.well.ox.ac.uk/~gav/qctool_v2/documentation/sample_file_formats.html"><u>here</u></a>.
+                    The first column is required to be the sample ID column to be used for sample ID matching with the phenotype file.
                     <br /><br /> In GEM versions &ge; 1.1, the .sample file will be prioritized over the sample identifier block in the BGEN file for sample identifier matching.
                 </div>
             </td>
