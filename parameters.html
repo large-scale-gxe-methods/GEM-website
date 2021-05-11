@@ -99,8 +99,14 @@
             <tr><td height="35">--bed</td><td height="35">Path to the .bed file.</td></tr>
             <tr><td height="35">--bim</td><td height="35">Path to the .bim file.</td></tr>
             <tr><td height="35">--fam</td><td height="35">Path to the .fam file.</td></tr>
-            <tr><td height="35">--out</td><td height="50">Full path and extension to where GEM should output results. <br /> <b>Default</b>: gem.out</td></tr>
-
+            <tr><td height="70">--out</td><td height="50">Full path and extension to where GEM should output results. <br /> <b>Default</b>: gem.out</td></tr>
+            <tr><td height="35">--out-style</td><td height="50"> Modifies the output of GEM. Must be one of the following: <br />
+                                                                 &nbsp;&nbsp; minimum: Output the summary statistics for only the GxE and marginal G terms. <br />
+                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; meta: 'minimum' output plus additional fields for the main G and any GxCovariate terms. <br />
+                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; full: 'meta' output plus additional fields needed for re-analyses of a subset of <br />
+                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interactions. <br />
+                                                                 <b>Default</b>: minimum
+                                           </td></tr>
 
 
             <tr class="spacer"><td colspan="1">&nbsp;</td></tr>
@@ -119,7 +125,7 @@
             </tr>
             <tr><td height="35">--sampleid-name</td><td height="35">Column name in the phenotype file that contains sample identifiers.</td></tr>
             <tr><td height="35">--pheno-name</td><td height="35">Column name in the phenotype file that contains the phenotype of interest.</td></tr>
-            <tr><td height="50">--exposure-names</td><td height="50">One or more column names in the phenotype file naming the exposure(s) to be included in interaction tests.</td></tr>
+            <tr><td height="50">--exposure-names</td><td height="50">One or more column names in the phenotype file naming the exposure(s) to be included in interaction tests. GEM wil run a G-only model when this flag is not specified.</td></tr>
             <tr><td height="50">--int-covar-names</td><td height="60">Any column names in the phenotype file naming the covariate(s) for which interactions should be included for adjustment (mutually exclusive with --exposure-names).</td></tr>
             <tr><td height="60">--covar-names</td><td height="60">Any column names in the phenotype file naming the covariates for which only main effects should be included for adjustment (mutually exclusive with both --exposure-names and --int-covar-names).</td></tr>
             <tr><td height="45">--pheno-type</td><td height="45">0 indicates a continuous phenotype and 1 indicates a binary phenotype.</td></tr>
@@ -147,7 +153,7 @@
             </tr>
             <tr><td height="35">--maf</td><td height="50">Threshold to filter variants based on the minor allele frequency [0.0, 0.5]. <br /> <span style="font-weight:bold">Default</span>: 0.001 </td></tr>
             <tr><td height="35">--miss-geno-cutoff</td><td height="50">Threshold to filter variants based on the missing genotype rate. <br /> <span style="font-weight:bold">Default</span>: 0.05 </td></tr>
-            <tr><td height="100">--include-snp-file</td><td height="75">Path to file containing a subset of variants in the specified BGEN file (--bgen) to be used for analysis. The first line in this file is the header that specifies which variant identifier in the BGEN file is used for ID matching. This must be either 'snpid' or 'rsid' for BGEN files. There should be one variant identifier per line after the header. Variants not listed in this file will be excluded from analysis.<br />
+            <tr><td height="100">--include-snp-file</td><td height="75">Path to file containing a subset of variants in the genotype file to be used for analysis. The first line in this file is the header that specifies which variant identifier to use for ID matching. This must be 'snpid' PGEN/BED files. For BGEN files, the header can be 'snpid' or 'rsid'. There should be one variant identifier per line after the header. <br />
 
 
 

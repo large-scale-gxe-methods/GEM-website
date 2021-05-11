@@ -65,9 +65,9 @@
         <tr>
             <td width="100">
                 <div style="line-height: 1.5em">
-                    The GEM software package can be downloaded at the Large Scale GxE Github website. <br /> <a href="https://github.com/large-scale-gxe-methods/GEM/releases"><u>https://github.com/large-scale-gxe-methods/GEM/releases</u></a>.
+                    The GEM software package can be downloaded at the Large-Scale GxE Github website. <br /> <a href="https://github.com/large-scale-gxe-methods/GEM/releases"><u>https://github.com/large-scale-gxe-methods/GEM/releases</u></a>.
                     <br /><br />We recommend installing the source code from the latest version of the software at the GitHub release page.
-                    <br /><br />Current version is 1.2.
+                    <br /><br />Current version is 1.3.
                 </div>
             </td>
 
@@ -91,9 +91,7 @@
         <tr>
             <td>
                 <div style="line-height: 1.5em">
-                    GEM is a software written in C/C++11 and so a C/C++ compiler with C++11 support is needed.
-                    <br /> We have mostly compiled GEM with the GNU compiler collection (GCC) versions 7.5.0 &le; x &le; 9.3.0.
-
+                    A compiler with C++11 support is required.
                 </div>
             </td>
         </tr>
@@ -106,14 +104,14 @@
         <tr>
             <td>
                 <div style="line-height: 1.5em">
-                    The LAPACK(Linear Algebra PACKage) and BLAS(Basic Linear Algebra Subprograms) libraries are used to optimize matrix operations in GEM. <br /><br />LAPACK/BLAS version 3.9.0 has been successfully tested.
+                    The LAPACK(Linear Algebra PACKage) and BLAS(Basic Linear Algebra Subprograms) libraries are used to optimize matrix operations in GEM. <br /><br />
 
                     <br /><br /> <u>Intel processors</u>:
-                    <br /> If the Math Kernal Library (MKL) is installed, we recommend linking LAPACK/BLAS through MKL for a greater performance boost. This can be done by replacing -llapack and -lblas  in the makefile with <br /> -lmkl_gf_lp64 -lmkl_sequential -lmkl_core and re-compiling the software.
+                    <br /> We recommend linking LAPACK/BLAS through the Math Kernal Library (MKL) for a greater performance boost. This can be done by replacing -llapack and -lblas  in the makefile with <br /> -lmkl_gf_lp64 -lmkl_sequential -lmkl_core and re-compiling the software.
                     <br /><br /> It is important to compile with -lmkl_sequential since GEM already does multithreading across SNPs.
-                    <br /><br /> MKL versions 2019 &le; x &le; 2020 have been successfully tested.
+
                     <br /><br /><br /> <u>AMD processors</u>:
-                    <br /> For AMD processors, OpenBLAS or ATLAS may be better alternatives for optimized matrix operations.
+                    <br /> For AMD processors, OpenBLAS (-lopenblas) may be a better alternative.
                 </div>
             </td>
         </tr>
@@ -137,8 +135,6 @@
                         <br /> &nbsp; &nbsp; &nbsp; 3. libboost_filesystem
                         <br /> &nbsp; &nbsp; &nbsp; 4. libboost_thread
                     </div>
-
-                    <br /> Boost versions 1.58.0 &le; x &le; 1.73.0 have been successfully  tested.
 
                 </div>
             </td>
